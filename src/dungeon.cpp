@@ -7,6 +7,15 @@
 #include "item.h"
 #include "player.h"
 
+Dungeon::Dungeon() : Game{"Dungeon"} {}
+
+void Dungeon::play() {
+  set_score(play_dungeon());
+  ++m_times_played;
+}
+
+int Dungeon::times_played() const { return m_times_played; }
+
 void connect_rooms(Room &a, Direction d, Room &b) {
   a.connect(d, &b);
   b.connect(opposite(d), &a);

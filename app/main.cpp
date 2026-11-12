@@ -6,6 +6,7 @@
 
 #include "blackjack.h"
 #include "dungeon.h"
+#include "game.h"
 #include "hangman.h"
 #include "input.h"
 #include "minesweeper.h"
@@ -22,7 +23,9 @@ void print_menu() {
             << "0. Quit\n";
 }
 
-void report_score(int score) { std::cout << "Score: " << score << "\n"; }
+void report_score(const Game &game) {
+  std::cout << game.title() << " score: " << game.last_score() << "\n";
+}
 
 Choice parse_choice(const std::string &text) {
   if (text == "1") {
@@ -46,6 +49,11 @@ Choice parse_choice(const std::string &text) {
 } // namespace
 
 int main() {
+  Hangman hangman;
+  Dungeon dungeon;
+  Blackjack blackjack;
+  Minesweeper minesweeper;
+
   std::string line;
   while (true) {
     print_menu();
@@ -58,16 +66,20 @@ int main() {
     }
     switch (choice) {
     case Choice::hangman:
-      report_score(play_hangman());
+      hangman.play();
+      report_score(hangman);
       break;
     case Choice::dungeon:
-      report_score(play_dungeon());
+      dungeon.play();
+      report_score(dungeon);
       break;
     case Choice::blackjack:
-      report_score(play_blackjack());
+      blackjack.play();
+      report_score(blackjack);
       break;
     case Choice::minesweeper:
-      report_score(play_minesweeper());
+      minesweeper.play();
+      report_score(minesweeper);
       break;
     case Choice::quit:
       break;

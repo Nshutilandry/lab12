@@ -9,6 +9,15 @@
 #include "hand.h"
 #include "input.h"
 
+Blackjack::Blackjack() : Game{"Blackjack"} {}
+
+void Blackjack::play() {
+  set_score(play_blackjack());
+  ++m_times_played;
+}
+
+int Blackjack::times_played() const { return m_times_played; }
+
 namespace {
 
 inline constexpr int starting_bankroll = 100;

@@ -2,10 +2,22 @@
 #define ARCADE_BLACKJACK_H
 
 #include "deck.h"
+#include "game.h"
 #include "hand.h"
 
 /// @file blackjack.h
-/// @brief Blackjack for one player against the dealer.
+/// @brief Blackjack helpers and its arcade game class.
+
+class Blackjack : public Game {
+public:
+  Blackjack();
+
+  void play();
+  int times_played() const;
+
+private:
+  int m_times_played{0};
+};
 
 /// How a round ended, from the player's side.
 enum class Outcome {

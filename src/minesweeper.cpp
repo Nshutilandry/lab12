@@ -7,6 +7,15 @@
 #include "board.h"
 #include "input.h"
 
+Minesweeper::Minesweeper() : Game{"Minesweeper"} {}
+
+void Minesweeper::play() {
+  set_score(play_minesweeper());
+  ++m_times_played;
+}
+
+int Minesweeper::times_played() const { return m_times_played; }
+
 namespace {
 
 /// Read "<row> <col>" from text. Returns false if it is not two whole numbers.

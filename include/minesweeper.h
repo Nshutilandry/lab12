@@ -1,8 +1,21 @@
 #ifndef ARCADE_MINESWEEPER_H
 #define ARCADE_MINESWEEPER_H
 
+#include "game.h"
+
 /// @file minesweeper.h
-/// @brief The Minesweeper game loop.
+/// @brief Minesweeper game helpers and its arcade game class.
+
+class Minesweeper : public Game {
+public:
+  Minesweeper();
+
+  void play();
+  int times_played() const;
+
+private:
+  int m_times_played{0};
+};
 
 /// The score for a game.
 /// @param revealed_count squares the player uncovered

@@ -4,8 +4,21 @@
 #include <random>
 #include <string>
 
+#include "game.h"
+
 /// @file hangman.h
-/// @brief Hangman, written with free functions only.
+/// @brief Hangman game helpers and its arcade game class.
+
+class Hangman : public Game {
+public:
+  Hangman();
+
+  void play();
+  int times_played() const;
+
+private:
+  int m_times_played{0};
+};
 
 /// The number of wrong guesses that lose the game.
 inline constexpr int max_misses = 6;

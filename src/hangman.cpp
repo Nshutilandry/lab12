@@ -6,6 +6,15 @@
 #include "input.h"
 #include "words.h"
 
+Hangman::Hangman() : Game{"Hangman"} {}
+
+void Hangman::play() {
+  set_score(play_hangman());
+  ++m_times_played;
+}
+
+int Hangman::times_played() const { return m_times_played; }
+
 std::string pick_word(const std::string words[], int count, std::mt19937 &gen) {
   std::uniform_int_distribution<int> pick{0, count - 1};
   return words[pick(gen)];
